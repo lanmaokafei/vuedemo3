@@ -15,7 +15,9 @@
           </div>
       </div>
       <div class="app-content">
-          content
+          <keep-alive>
+            <router-view></router-view>
+          </keep-alive>
       </div>
       <div class="app-foot">
           <p>&copy; 2018 懒猫咖啡</p>
