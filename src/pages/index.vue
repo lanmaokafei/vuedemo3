@@ -4,14 +4,14 @@
         <div class="index-left-block">
             <h2>全部产品</h2>
             <template v-for="product in productList">
-                <h3 :key="product.title">{{ product.title }}</h3>
-                <ul :key="product.list">
-                    <li v-for="item in product.list" :key="item.list">
+                <h3 :key="product.id">{{ product.title }}</h3>
+                <ul :key="product.id">
+                    <li v-for="item in product.list" :key="item.id">
                         <a :href="item.url">{{ item.name }}</a>
                         <span v-if="item.hot" class="hot-tag">HOT</span>
                     </li>
                 </ul>
-                <div v-if="!product.last" class="hr" :key="product.last"></div>
+                <div v-if="!product.last" class="hr" :key="product.id"></div>
             </template>
         </div>
         <div class="index-left-block lastest-news">
@@ -44,83 +44,20 @@
 export default {
   data (){
       return {
-          boardList:[
-              {
-                  title:'开放产品',
-                  description:'开放产品是一款开放产品',
-                  saleout:false
-              },
-              {
-                  title:'品牌营销',
-                  description:'开放产品是一款开放产品',
-                  saleout:false
-              },
-              {
-                  title:'使命必达',
-                  description:'开放产品是一款开放产品',
-                  saleout:false
-              },
-              {
-                  title:'勇攀高峰',
-                  description:'开放产品是一款开放产品',
-                  saleout:false
-              }
-          ],
-          newList:[
-               {
-                        title: '数据统计',
-                        url: 'http://127.0.0.1/analysis'
-                    },
-                    {
-                        title: '数据统计',
-                        url: 'http://127.0.0.1/analysis'},
-                    {
-                        title: '数据统计',
-                        url: 'http://127.0.0.1/analysis'}
-          ],
-          productList:{
-            pc: {
-                title: 'PC产品', 
-                list: [
-                    {
-                        name: '数据统计',
-                        url: 'http://127.0.0.1/analysis'
-                    },
-                    {
-                        name: '数据统计',
-                        url: 'http://127.0.0.1/analysis'},
-                    {
-                        name: '数据统计',
-                        url: 'http://127.0.0.1/analysis'}
-                    ]},
-            app: {
-                title: '手机应用类', 
-                last:true,
-                list: [
-                    {
-                        name: '数据统计',
-                        url: 'http://127.0.0.1/analysis',
-                        hot:true
-                    },
-                    {
-                        name: '数据统计',
-                        url: 'http://127.0.0.1/analysis'},
-                    {
-                        name: '数据统计',
-                        url: 'http://127.0.0.1/analysis'}
-                    ]}
-        }
+          boardList:{},
+          newList:{},
+          productList:{}
       }
     },
   mounted (){
       // 请求本地的数据
-    //   this.getRemotelData()
+      this.getRemotelData()
     },
   methods:{
       getRemotelData(){
         // 使用axios
-        // return this.axios.get('http://localhost:5000/data', {
-        return this.axios.get('apis/data', {
+        return this.axios.get('http://localhost:5000/data', {
+        // return this.axios.get('apis/data', {
             params: {
                 ID: 12345
             }
@@ -130,6 +67,8 @@ export default {
             const res = response.data;
             if(res){
                 this.productList = res.productList;
+                this.newList = res.newList;
+                this.boardList = res.boardList;
                 console.log(this.productList);
                 }
             })

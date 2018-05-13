@@ -1,46 +1,68 @@
 {
-    "productList":{
-        "pc":{
-            "title":"PC产品",
-            "list":[
-                {
-                    "name":"数据统计",
-                    "url":"http://127.0.0.1/analysis"
-                },
-                {
-                    "name":"数据预测",
-                    "url":"http://127.0.0.1/analysis"
-                },
-                {
-                    "name":"流量分析",
-                    "url":"http://127.0.0.1/analysis"
-                },
-                {
-                    "name":"广告发布",
-                    "url":"http://127.0.0.1/analysis"
-                }
-            ]
+    "boardList":[
+        {
+            "title":"开放产品",
+            "description":"开放产品是一款开放产品",
+            "saleout":false
         },
-        "app":{
-            "title":"手机应用类",
-            "list":[
-                {
-                    "name":"数据统计",
-                    "url":"http://127.0.0.1/analysis"
-                },
-                {
-                    "name":"数据预测",
-                    "url":"http://127.0.0.1/analysis"
-                },
-                {
-                    "name":"流量分析",
-                    "url":"http://127.0.0.1/analysis"
-                },
-                {
-                    "name":"广告发布",
-                    "url":"http://127.0.0.1/analysis"
-                }
-            ]
+        {
+            "title":"品牌营销",
+            "description":"开放产品是一款开放产品",
+            "saleout":false
+        },
+        {
+            "title":"使命必达",
+            "description":"开放产品是一款开放产品",
+            "saleout":false
+        },
+        {
+            "title":"勇攀高峰",
+            "description":"开放产品是一款开放产品",
+            "saleout":false
         }
-    }
+    ],
+    "newList":[
+         {
+                  "title": "数据统计",
+                  "url": "http://127.0.0.1/analysis"
+              },
+              {
+                  "title": "数据统计",
+                  "url": "http://127.0.0.1/analysis"},
+              {
+                  "title": "数据统计",
+                  "url": "http://127.0.0.1/analysis"}
+    ],
+    "productList":{
+      "pc": {
+          "title": "PC产品", 
+          "list": [
+              {
+                  "name": "数据统计",
+                  "url": "http://127.0.0.1/analysis"
+              },
+              {
+                  "name": "数据统计",
+                  "url": "http://127.0.0.1/analysis"},
+              {
+                  "name": "数据统计",
+                  "url": "http://127.0.0.1/analysis"}
+              ]},
+      "app": {
+          "title": "手机应用类", 
+          "last":true,
+          "list": [
+              {
+                  "name": "数据统计",
+                  "url": "http://127.0.0.1/analysis",
+                  "hot":true
+              },
+              {
+                  "name": "数据统计",
+                  "url": "http://127.0.0.1/analysis"},
+              {
+                  "name": "数据统计",
+                  "url": "http://127.0.0.1/analysis"}
+              ]}
+  }
 }
