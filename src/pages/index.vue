@@ -1,46 +1,42 @@
 <template>
   <div class="index-wrap">
-      <div class="index-left">
-          <div class="index-left-block">
-              <h2>全部产品</h2>
-              <h3>PC产品</h3>
-              <ul>
-                  <li v-for="item in productList.game" :key="item.id">
-                      <a :href="item.url">{{item.name}}</a>
-                  </li>
-              </ul>
-              <div class="hr">
-                  <h3>应用类</h3>
-                  <ul>
-                    <li v-for="item in productList.app" :key="item.id">
-                        <a :href="item.url">{{item.name}}</a>
+    <div class="index-left">
+        <div class="index-left-block">
+            <h2>全部产品</h2>
+            <template v-for="product in productList">
+                <h3 :key="product.title">{{ product.title }}</h3>
+                <ul :key="product.list">
+                    <li v-for="item in product.list" :key="item.list">
+                        <a :href="item.url">{{ item.name }}</a>
+                        <span v-if="item.hot" class="hot-tag">HOT</span>
                     </li>
-                  </ul>
-              </div>
-              <div class="index-left-block lastest-news">
-                  <h2>最新消息</h2>
-                  <ul>
-                    <li v-for="item in productList.game" :key="item.id">
-                        <a :href="item.url">{{item.name}}</a>
-                    </li>
-                  </ul>
-              </div>
-          </div>
-          <div class="index-right">
-              <slide-show :slides="slides"></slide-show>
-              <div class="index-board-list">
-                  <div class="index-board-item" v-for="(item, index) in boardList" :key="item.id" :class="['index-board-' + index,{'line-last':(index + 1) % 2 === 0}]">
-                      <div class="index-board-item-inner">
-                          <h2>{{item.title}}</h2>
-                          <p>{{item.descroption}}</p>
-                          <div class="index-board-button">
-                              <router-link class="button" :to="{path:'detail'}">立即购买</router-link>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+                </ul>
+                <div v-if="!product.last" class="hr" :key="product.last"></div>
+            </template>
+        </div>
+        <div class="index-left-block lastest-news">
+            <h2>最新消息</h2>
+            <ul>
+            <li v-for="item in newList" :key="item.id">
+                <a :href="item.url">{{item.title}}</a>
+            </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="index-right">
+        <div class="index-board-list">
+            <div class="index-board-item" v-for="(item, index) in boardList" :key="item.id" :class="[{'line-last' : index % 2 !==0},'index-board-' + index ]">
+                <div class="index-board-item-inner">
+                    <h2>{{item.title}}</h2>
+                    <p>{{item.description}}</p>
+                    <div class="index-board-button">
+                        <a href="" class="button">立即购买</a>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -48,10 +44,44 @@
 export default {
   data (){
       return {
+          boardList:[
+              {
+                  title:'开放产品',
+                  description:'开放产品是一款开放产品',
+                  saleout:false
+              },
+              {
+                  title:'品牌营销',
+                  description:'开放产品是一款开放产品',
+                  saleout:false
+              },
+              {
+                  title:'使命必达',
+                  description:'开放产品是一款开放产品',
+                  saleout:false
+              },
+              {
+                  title:'勇攀高峰',
+                  description:'开放产品是一款开放产品',
+                  saleout:false
+              }
+          ],
+          newList:[
+               {
+                        title: '数据统计',
+                        url: 'http://127.0.0.1/analysis'
+                    },
+                    {
+                        title: '数据统计',
+                        url: 'http://127.0.0.1/analysis'},
+                    {
+                        title: '数据统计',
+                        url: 'http://127.0.0.1/analysis'}
+          ],
           productList:{
             pc: {
-                'title': 'PC产品', 
-                'list': [
+                title: 'PC产品', 
+                list: [
                     {
                         name: '数据统计',
                         url: 'http://127.0.0.1/analysis'
@@ -64,11 +94,13 @@ export default {
                         url: 'http://127.0.0.1/analysis'}
                     ]},
             app: {
-                'title': 'PC产品', 
-                'list': [
+                title: '手机应用类', 
+                last:true,
+                list: [
                     {
                         name: '数据统计',
-                        url: 'http://127.0.0.1/analysis'
+                        url: 'http://127.0.0.1/analysis',
+                        hot:true
                     },
                     {
                         name: '数据统计',
@@ -148,7 +180,7 @@ export default {
     padding: 10px 15px;
 }
 .index-left-block li {
-    overflow: hidden;
+    padding: 5px;
 }
 .index-board-list {
     overflow: hidden;
@@ -192,5 +224,9 @@ export default {
 }
 .lastest-news {
     min-height: 512px;
+}
+.hot-tag {
+    background: red;
+    color: #ffffff;
 }
 </style>
